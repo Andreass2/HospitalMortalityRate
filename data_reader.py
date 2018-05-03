@@ -43,7 +43,7 @@ class InHospitalMortalityReader(Reader):
 
     
         
-    def _load_data(self, discretizer, small_part=False):
+    def _load_data(self, small_part=False):
         N = self.get_number_of_examples()
         if small_part:
             N = 1
