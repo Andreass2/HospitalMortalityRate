@@ -20,7 +20,7 @@ def print_metrics_binary(y_true, predictions, verbose=1):
     prec1 = cf[1][1] / (cf[1][1] + cf[0][1])
     rec0 = cf[0][0] / (cf[0][0] + cf[0][1])
     rec1 = cf[1][1] / (cf[1][1] + cf[1][0])
-    #auroc = metrics.roc_auc_score(y_true, predictions[:, 1])
+    auroc = metrics.roc_auc_score(y_true, predictions[:, 1])
 
     (precisions, recalls, thresholds) = metrics.precision_recall_curve(y_true, predictions[:, 1])
     auprc = metrics.auc(recalls, precisions)
@@ -32,7 +32,7 @@ def print_metrics_binary(y_true, predictions, verbose=1):
         print("precision class 1 =", prec1)
         print("recall class 0 =", rec0)
         print("recall calss 1 =", rec1)
-        #print("AUC of ROC =", auroc)
+        print("AUC of ROC =", auroc)
         print("AUC of PRC =", auprc)
         print("min(+P, Se) =", minpse)
 
@@ -41,6 +41,6 @@ def print_metrics_binary(y_true, predictions, verbose=1):
             "prec1": prec1,
             "rec0": rec0,
             "rec1": rec1,
-            #"auroc": auroc,
+            "auroc": auroc,
             "auprc": auprc,
             "minpse": minpse}
